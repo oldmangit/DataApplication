@@ -1,3 +1,8 @@
+using DataApplication.Data;
+using DataApplication.Repository;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace DataApplication
 {
     internal static class Program
@@ -6,7 +11,18 @@ namespace DataApplication
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory)
+                                                    .AddJsonFile("appsettings.json", optional: false).Build();
+
+            var services = new ServiceCollection();
+            services.AddSingleton<IConfiguration>(config);
+            services.AddSingleton<DbFactory>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<Form1>();
+
+            Application.Run(services.BuildServiceProvider().GetRequiredService<Form1>());
+            //Application.Run(new Form1());
         }
     }
 }
