@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataApplication.Data
 {
-    internal class DbFactory
+    public class DbFactory
     {
+        public DbFactory(IConfiguraion config)
+        {
+
+        }
+        private readonly string connectionString = "";
     }
 }
