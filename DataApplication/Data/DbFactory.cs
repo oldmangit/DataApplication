@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +10,17 @@ namespace DataApplication.Data
 {
     public class DbFactory
     {
-        public DbFactory(IConfiguraion config)
+        private readonly string _connectionString;
+        public DbFactory(IConfiguration config)
         {
-
+            _connectionString = config.GetConnectionString("defaultConnection") ??
+                                    throw new Exception("Connection string not found!");
         }
-        private readonly string connectionString = "";
+        public async Task<MySqlConnection> createConnectionAsync()
+        {
+            var connection = new MySqlConnection(_connectionString);
+            await connection.OpenAsync();
+            return connection;
+        }
     }
 }
