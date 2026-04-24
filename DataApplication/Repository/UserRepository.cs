@@ -23,7 +23,10 @@ namespace DataApplication.Repository
             var table = new DataTable();
             using (var connection =await _factory.createConnectionAsync())
             {
+
+
                 string query = "select * from employees limit 10;";
+
                 using (var command = new MySqlCommand(query, connection))
                 {
                     var result =await command.ExecuteReaderAsync();
