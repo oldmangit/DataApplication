@@ -1,4 +1,5 @@
 using DataApplication.Data;
+using DataApplication.GUI_Forms;
 using DataApplication.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,9 +21,22 @@ namespace DataApplication
             services.AddSingleton<DbFactory>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<Form1>();
+            services.AddTransient<LoginForm>();
 
-            Application.Run(services.BuildServiceProvider().GetRequiredService<Form1>());
-            //Application.Run(new Form1());
+            var provider = services.BuildServiceProvider();
+            var login = provider.GetRequiredService<LoginForm>();
+
+           
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                var mainForm = provider.GetRequiredService<Form1>();
+                Application.Run(mainForm);
+            }
+            else
+            {
+                //User closed login or failed
+                Application.Exit();
+            }
         }
     }
 }

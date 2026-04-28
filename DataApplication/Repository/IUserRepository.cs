@@ -10,5 +10,7 @@ namespace DataApplication.Repository
     public interface IUserRepository
     {
         Task<DataTable> LoadAllAsync();
+        Task<bool> RegisterUserAsync(string username, string user_role, string password);
+        Task<bool> LoginUserAsync(string username, string password);
     }
 }

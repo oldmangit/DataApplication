@@ -16,5 +16,6 @@ namespace DataApplication
             var data = await _repo.LoadAllAsync();
             dataGridView1.DataSource = data;
         }
+
     }
 }
