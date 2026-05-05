@@ -70,7 +70,7 @@ namespace DataApplication.GUI_Forms
             if (result)
             {
                 this.DialogResult = DialogResult.OK;
-
+                this.Close();
             }
             else
             {

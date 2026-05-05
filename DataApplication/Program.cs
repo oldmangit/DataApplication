@@ -22,21 +22,15 @@ namespace DataApplication
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<Form1>();
             services.AddTransient<LoginForm>();
+            services.AddTransient<ModeSelectionForm>();
+
+            services.AddSingleton<AppController>();
 
             var provider = services.BuildServiceProvider();
-            var login = provider.GetRequiredService<LoginForm>();
 
-           
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                var mainForm = provider.GetRequiredService<Form1>();
-                Application.Run(mainForm);
-            }
-            else
-            {
-                //User closed login or failed
-                Application.Exit();
-            }
+            var app = provider.GetRequiredService<AppController>();
+            app.Run();
+            
         }
     }
 }

@@ -207,6 +207,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 442);
             Controls.Add(panelLogin);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "LoginForm";
             Text = "LoginForm";
             panel1.ResumeLayout(false);

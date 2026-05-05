@@ -17,5 +17,13 @@ namespace DataApplication
             dataGridView1.DataSource = data;
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to exit application ? ","Confirm Exit",MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }
