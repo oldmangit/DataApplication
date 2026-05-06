@@ -1,0 +1,73 @@
+﻿using DataApplication.GUI_Forms;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataApplication
+{
+    public class AppControl : ApplicationContext
+    {
+        private readonly IServiceProvider _provider;
+
+        
+        public AppControl(IServiceProvider provider)
+        {
+            _provider = provider;
+            ShowLogin();
+        }
+        
+        private void ShowLogin()
+        {
+            var login = _provider.GetRequiredService<LoginForm>();
+            login.LoginSuccess += OnLoginSuccess;
+            login.FormClosed += OnFormClosed;
+            login.Show();
+        }
+        private void OnLoginSuccess(object sender , EventArgs e)
+        {
+            var modeForm = _provider.GetRequiredService<ModeSelectionForm>();
+            modeForm.FormClosed += OnFormClosed;
+            modeForm.LogoutRequested += OnLogoutRequested;
+            modeForm.OnlineModeSelected += OnOnlineModeSelected;
+            modeForm.Show();
+
+            if (sender is LoginForm login)
+            {
+                login.LoginSuccess -= OnLoginSuccess;
+                login.FormClosed -= OnFormClosed;
+                login.Close();
+            }
+        }
+        private void OnOnlineModeSelected(object sender, EventArgs e)
+        {
+            var form1 = _provider.GetRequiredService<Form1>();
+            form1.FormClosed += OnFormClosed;
+            form1.Show();
+
+            if (sender is Form f)
+                f.Close();
+        }
+
+        private void OnLogoutRequested(object sender , EventArgs e)
+        {
+            ShowLogin();
+
+            if (sender is ModeSelectionForm mode)
+            {
+                mode.LogoutRequested -= OnLogoutRequested;
+                mode.FormClosed -= OnFormClosed;
+                mode.Close();
+            }
+        }
+
+        private void OnFormClosed(object sender , FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+                ExitThread();
+        }
+
+    }
+}

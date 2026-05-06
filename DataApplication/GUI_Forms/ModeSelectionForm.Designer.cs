@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -115,6 +117,7 @@
             btnOnlineMode.TabIndex = 0;
             btnOnlineMode.Text = "On-line Mode";
             btnOnlineMode.UseVisualStyleBackColor = false;
+            btnOnlineMode.Click += btnOnlineMode_Click;
             // 
             // panel3
             // 

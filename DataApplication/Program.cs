@@ -18,18 +18,25 @@ namespace DataApplication
 
             var services = new ServiceCollection();
             services.AddSingleton<IConfiguration>(config);
+
             services.AddSingleton<DbFactory>();
+
             services.AddTransient<IUserRepository, UserRepository>();
+
             services.AddTransient<Form1>();
             services.AddTransient<LoginForm>();
             services.AddTransient<ModeSelectionForm>();
 
-            services.AddSingleton<AppController>();
+            services.AddSingleton<AppControl>();
 
             var provider = services.BuildServiceProvider();
 
-            var app = provider.GetRequiredService<AppController>();
-            app.Run();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+
+            var app = provider.GetRequiredService<AppControl>();
+            Application.Run(app);
             
         }
     }

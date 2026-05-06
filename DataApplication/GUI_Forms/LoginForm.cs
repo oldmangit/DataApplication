@@ -14,6 +14,7 @@ namespace DataApplication.GUI_Forms
     public partial class LoginForm : Form
     {
         private readonly IUserRepository _repo;
+        public event EventHandler LoginSuccess;
         public LoginForm(IUserRepository repo)
         {
             InitializeComponent();
@@ -34,8 +35,7 @@ namespace DataApplication.GUI_Forms
 
             if (success)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                LoginSuccess?.Invoke(this, EventArgs.Empty);
             }
             else
             {

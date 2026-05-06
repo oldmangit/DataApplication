@@ -15,6 +15,8 @@ namespace DataApplication.GUI_Forms
     public partial class ModeSelectionForm : Form
     {
         private readonly IUserRepository _repo;
+        public event EventHandler OnlineModeSelected;
+        public event EventHandler LogoutRequested;
         public ModeSelectionForm(IUserRepository repo)
         {
             InitializeComponent();
@@ -28,8 +30,12 @@ namespace DataApplication.GUI_Forms
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Retry;
-            this.Close();
+            LogoutRequested?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnOnlineMode_Click(object sender, EventArgs e)
+        {
+            OnlineModeSelected?.Invoke(this, EventArgs.Empty);
         }
     }
 }
