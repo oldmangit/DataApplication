@@ -15,6 +15,7 @@ namespace DataApplication.GUI_Forms
     {
         private readonly IUserRepository _repo;
         public event EventHandler LoginSuccess;
+        public event EventHandler NewUser;
         public LoginForm(IUserRepository repo)
         {
             InitializeComponent();
@@ -69,8 +70,7 @@ namespace DataApplication.GUI_Forms
 
             if (result)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                btnBack_Click(null, null);
             }
             else
             {

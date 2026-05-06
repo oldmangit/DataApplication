@@ -9,6 +9,7 @@ namespace DataApplication
     {
         private readonly IUserRepository _repo;
         private GMapControl gMapControl1;
+        public event EventHandler CloseOnlineMode;
         public Form1(IUserRepository repo)
         {
             InitializeComponent();
@@ -36,11 +37,16 @@ namespace DataApplication
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to exit application ? ","Confirm Exit",MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Are you sure want to exit Online Mode? ", "Confirm Exit", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                this.Close();
+                CloseOnlineMode?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -12,6 +12,8 @@ namespace DataApplication
     {
         private readonly IServiceProvider _provider;
 
+        private LoginForm login;
+        private ModeSelectionForm modeForm;
         
         public AppControl(IServiceProvider provider)
         {
@@ -21,14 +23,18 @@ namespace DataApplication
         
         private void ShowLogin()
         {
-            var login = _provider.GetRequiredService<LoginForm>();
+            login = _provider.GetRequiredService<LoginForm>();
+
             login.LoginSuccess += OnLoginSuccess;
             login.FormClosed += OnFormClosed;
+            
             login.Show();
         }
+       
         private void OnLoginSuccess(object sender , EventArgs e)
         {
-            var modeForm = _provider.GetRequiredService<ModeSelectionForm>();
+            modeForm = _provider.GetRequiredService<ModeSelectionForm>();
+
             modeForm.FormClosed += OnFormClosed;
             modeForm.LogoutRequested += OnLogoutRequested;
             modeForm.OnlineModeSelected += OnOnlineModeSelected;
@@ -44,13 +50,21 @@ namespace DataApplication
         private void OnOnlineModeSelected(object sender, EventArgs e)
         {
             var form1 = _provider.GetRequiredService<Form1>();
+            form1.CloseOnlineMode += OnCloseOnlineMode;
             form1.FormClosed += OnFormClosed;
             form1.Show();
 
-            if (sender is Form f)
-                f.Close();
+            if (sender is ModeSelectionForm f)
+                f.Hide();
         }
+        private void OnCloseOnlineMode(object sender , EventArgs e)
+        {
 
+            modeForm?.Show();
+
+            if (sender is Form form1)
+                form1.Close();
+        }
         private void OnLogoutRequested(object sender , EventArgs e)
         {
             ShowLogin();
