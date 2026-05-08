@@ -3,7 +3,7 @@
 
 namespace DataApplication
 {
-    partial class Form1
+    partial class OnlineForm
     {
        
         private System.ComponentModel.IContainer components = null;
@@ -24,7 +24,7 @@ namespace DataApplication
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlineForm));
             panel1 = new Panel();
             panel4 = new Panel();
             dataGridView1 = new DataGridView();

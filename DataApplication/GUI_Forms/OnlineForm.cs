@@ -1,3 +1,4 @@
+using DataApplication.GUI_Forms;
 using DataApplication.Repository;
 using GMap.NET;
 using GMap.NET.MapProviders;
@@ -5,12 +6,12 @@ using GMap.NET.WindowsForms;
 
 namespace DataApplication
 {
-    public partial class Form1 : Form
+    public partial class OnlineForm : BaseForm
     {
         private readonly IUserRepository _repo;
         private GMapControl gMapControl1;
         public event EventHandler CloseOnlineMode;
-        public Form1(IUserRepository repo)
+        public OnlineForm(IUserRepository repo)
         {
             InitializeComponent();
             _repo = repo;

@@ -49,7 +49,7 @@ namespace DataApplication
         }
         private void OnOnlineModeSelected(object sender, EventArgs e)
         {
-            var form1 = _provider.GetRequiredService<Form1>();
+            var form1 = _provider.GetRequiredService<OnlineForm>();
             form1.CloseOnlineMode += OnCloseOnlineMode;
             form1.FormClosed += OnFormClosed;
             form1.Show();

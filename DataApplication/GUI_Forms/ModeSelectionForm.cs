@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace DataApplication.GUI_Forms
 {
-    public partial class ModeSelectionForm : Form
+    public partial class ModeSelectionForm : BaseForm
     {
         private readonly IUserRepository _repo;
         public event EventHandler OnlineModeSelected;

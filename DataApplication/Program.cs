@@ -23,7 +23,7 @@ namespace DataApplication
 
             services.AddTransient<IUserRepository, UserRepository>();
 
-            services.AddTransient<Form1>();
+            services.AddTransient<OnlineForm>();
             services.AddTransient<LoginForm>();
             services.AddTransient<ModeSelectionForm>();
 
