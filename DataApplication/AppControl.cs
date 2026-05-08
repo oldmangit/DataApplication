@@ -38,6 +38,7 @@ namespace DataApplication
             modeForm.FormClosed += OnFormClosed;
             modeForm.LogoutRequested += OnLogoutRequested;
             modeForm.OnlineModeSelected += OnOnlineModeSelected;
+            modeForm.ShutdownApp += OnShuttingDownApp;
             modeForm.Show();
 
             if (sender is LoginForm login)
@@ -46,6 +47,17 @@ namespace DataApplication
                 login.FormClosed -= OnFormClosed;
                 login.Close();
             }
+        }
+        private void OnShuttingDownApp(object sender , EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to close the Application?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                modeForm?.Close();
+            }
+            else
+                return;
         }
         private void OnOnlineModeSelected(object sender, EventArgs e)
         {

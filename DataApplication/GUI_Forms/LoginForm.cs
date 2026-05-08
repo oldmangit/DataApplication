@@ -13,9 +13,10 @@ namespace DataApplication.GUI_Forms
 {
     public partial class LoginForm : BaseForm
     {
-        private readonly IUserRepository _repo;
+        private  IUserRepository _repo;
         public event EventHandler LoginSuccess;
         public event EventHandler NewUser;
+        
         public LoginForm(IUserRepository repo)
         {
             InitializeComponent();
@@ -27,6 +28,9 @@ namespace DataApplication.GUI_Forms
             btnBack.Visible = false;
         }
 
+
+
+        
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();

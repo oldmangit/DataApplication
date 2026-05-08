@@ -17,6 +17,8 @@ namespace DataApplication.GUI_Forms
         private readonly IUserRepository _repo;
         public event EventHandler OnlineModeSelected;
         public event EventHandler LogoutRequested;
+        public event EventHandler ShutdownApp;
+        
         public ModeSelectionForm(IUserRepository repo)
         {
             InitializeComponent();
@@ -25,7 +27,8 @@ namespace DataApplication.GUI_Forms
 
         private void btnShutdown_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult = DialogResult.OK;
+            ShutdownApp?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
