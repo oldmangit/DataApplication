@@ -1,5 +1,6 @@
 ﻿using DataApplication.Models;
 using DataApplication.Repository;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace DataApplication.GUI_Forms
         {
             InitializeComponent();
             MaximizeBox = false;
+            this.AcceptButton = btnLogin;
             _repo = repo;
 
             labelUserRole.Visible = false;
@@ -52,6 +54,11 @@ namespace DataApplication.GUI_Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            comboBoxRole.SelectedIndex = 0;
+            txtUserName.Text = "";
+            txtPassword.Text = "";
+            lblWarningMessage.Text = "";
+
             labelTitleName.Text = "Create new account";
             labelUserRole.Visible = true;
             comboBoxRole.Visible = true;
@@ -62,8 +69,6 @@ namespace DataApplication.GUI_Forms
 
             btnSave.Visible = true;
             btnBack.Visible = true;
-
-
         }
 
         private async void btnSave_Click(object? sender, EventArgs e)
@@ -72,21 +77,47 @@ namespace DataApplication.GUI_Forms
             string username = txtUserName.Text.Trim();
             string password = txtPassword.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(user_role) || user_role.Equals("select any role"))
+            {
+                lblWarningMessage.Text = "User role cannot be empty!";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                lblWarningMessage.Text = "Username cannot be empty!";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                lblWarningMessage.Text = "Password cannot be empty!";
+                return;
+            }
+
             bool result = await _repo.RegisterUserAsync(username, user_role, password);
 
             if (result)
             {
+                MessageBox.Show($"Successfully added {user_role} account!");
+
+                txtUserName.Text = "";
+                txtPassword.Text = "";
+                lblWarningMessage.Text = "";
+               
                 btnBack_Click(null, null);
             }
             else
             {
                 MessageBox.Show("Something is wrong!");
             }
-
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+
+            txtUserName.Text = "";
+            txtPassword.Text = "";
+            lblWarningMessage.Text = "";
+
             labelTitleName.Text = "Login into account";
             labelUserRole.Visible = false;
             comboBoxRole.Visible = false;

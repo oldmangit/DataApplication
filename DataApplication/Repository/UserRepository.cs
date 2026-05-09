@@ -73,9 +73,38 @@ namespace DataApplication.Repository
             }
         }
 
+        //public async Task<User?> GetUserAsync(string username)
+        //{
+        //    User? user = null;
+        //    string query = "select * from users where username = @username;";
+        //    using (var connection = await _factory.createConnectionAsync())
+        //    {
+        //        using (var command = new MySqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@username", username);
+
+        //            using (var reader = await command.ExecuteReaderAsync())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    user = new User
+        //                    {
+        //                        Id = Convert.ToInt32(reader["id"]),
+        //                        Username = reader["username"].ToString(),
+        //                        Password = reader["password"].ToString(),
+        //                        Role = reader["role"].ToString(),
+        //                        Is_active = Convert.ToBoolean(reader["is_active"]),
+        //                        Is_deleted = Convert.ToBoolean(reader["is_deleted"])
+        //                    };
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return user;
+        //}
         public async Task<User?> GetUserAsync(string username)
         {
-            User user = null;
+            User? user = null;
             string query = "select * from users where username = @username;";
             using (var connection = await _factory.createConnectionAsync())
             {
@@ -89,13 +118,20 @@ namespace DataApplication.Repository
                         {
                             user = new User
                             {
-                                Id = Convert.ToInt32(reader["id"]),
-                                Username = reader["username"].ToString(),
-                                Password = reader["password"].ToString(),
-                                Role = reader["role"].ToString(),
-                                Is_active = Convert.ToBoolean(reader["is_active"]),
-                                Is_deleted = Convert.ToBoolean(reader["is_deleted"])
+                                //Id = Convert.ToInt32(reader["id"]),
+                                //Username = reader["username"].ToString(),
+                                //Password = reader["password"].ToString(),
+                                //Role = reader["role"].ToString(),
+                                //Is_active = Convert.ToBoolean(reader["is_active"]),
+                                //Is_deleted = Convert.ToBoolean(reader["is_deleted"])
+                                Id = reader.GetInt32("id"),
+                                Username = reader.GetString("username"),
+                                Password = reader.GetString("password"),
+                                Role = reader.GetString("role"),
+                                Is_active = reader.GetBoolean("is_active"),
+                                Is_deleted = reader.GetBoolean("is_deleted")                                
                             };
+
                         }
                     }
                 }

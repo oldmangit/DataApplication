@@ -1,4 +1,5 @@
 using DataApplication.GUI_Forms;
+using DataApplication.Models;
 using DataApplication.Repository;
 using GMap.NET;
 using GMap.NET.MapProviders;
@@ -11,12 +12,21 @@ namespace DataApplication.GUI_Forms
         private readonly IUserRepository _repo;
         private GMapControl gMapControl1;
         public event EventHandler CloseOnlineMode;
-        
+
+        public User CurrentUser { get; set; }
         public OnlineForm(IUserRepository repo)
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             _repo = repo;
+
+            lblRoleName.Text = new User().Role;
+        }
+
+        public void InitializeUser(User user)
+        {
+            CurrentUser = user;
+            lblRoleName.Text = CurrentUser.Role;
         }
 
         private async void Form1_Load(object sender, EventArgs e)

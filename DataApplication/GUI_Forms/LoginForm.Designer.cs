@@ -37,6 +37,7 @@
             panel1 = new Panel();
             btnBack = new Button();
             groupBox1 = new GroupBox();
+            lblWarningMessage = new Label();
             btnSave = new Button();
             comboBoxRole = new ComboBox();
             labelUserRole = new Label();
@@ -104,7 +105,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnBack);
             panel1.Controls.Add(groupBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 100);
@@ -119,7 +119,8 @@
             btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
             btnBack.BackgroundImageLayout = ImageLayout.Zoom;
             btnBack.Cursor = Cursors.Hand;
-            btnBack.Location = new Point(207, 288);
+            btnBack.Location = new Point(1, 8);
+            btnBack.Margin = new Padding(0);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(33, 28);
             btnBack.TabIndex = 6;
@@ -129,6 +130,8 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(btnBack);
+            groupBox1.Controls.Add(lblWarningMessage);
             groupBox1.Controls.Add(txtUserName);
             groupBox1.Controls.Add(btnSave);
             groupBox1.Controls.Add(label2);
@@ -145,13 +148,23 @@
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             // 
+            // lblWarningMessage
+            // 
+            lblWarningMessage.AutoSize = true;
+            lblWarningMessage.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblWarningMessage.ForeColor = Color.Red;
+            lblWarningMessage.Location = new Point(59, 224);
+            lblWarningMessage.Name = "lblWarningMessage";
+            lblWarningMessage.Size = new Size(0, 16);
+            lblWarningMessage.TabIndex = 2;
+            // 
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.None;
             btnSave.Location = new Point(166, 176);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(65, 32);
-            btnSave.TabIndex = 8;
+            btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -161,11 +174,11 @@
             comboBoxRole.Anchor = AnchorStyles.None;
             comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "student", "instructor", "maintainer", "admin" });
+            comboBoxRole.Items.AddRange(new object[] { "select any role", "student", "instructor", "maintainer", "admin" });
             comboBoxRole.Location = new Point(166, 28);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(144, 23);
-            comboBoxRole.TabIndex = 7;
+            comboBoxRole.TabIndex = 1;
             // 
             // labelUserRole
             // 
@@ -232,7 +245,6 @@
             ClientSize = new Size(778, 442);
             Controls.Add(panelLogin);
             Name = "LoginForm";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             panel1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
@@ -260,5 +272,6 @@
         private Button btnSave;
         private Button btnBack;
         private GroupBox groupBox1;
+        private Label lblWarningMessage;
     }
 }

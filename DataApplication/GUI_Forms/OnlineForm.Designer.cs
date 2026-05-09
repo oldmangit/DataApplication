@@ -31,6 +31,7 @@ namespace DataApplication.GUI_Forms
             panel3 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            lblRoleName = new Label();
             btnExit = new Button();
             toolTip1 = new ToolTip(components);
             panel1.SuspendLayout();
@@ -94,12 +95,21 @@ namespace DataApplication.GUI_Forms
             // 
             // panel2
             // 
+            panel2.Controls.Add(lblRoleName);
             panel2.Controls.Add(btnExit);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(792, 31);
             panel2.TabIndex = 1;
+            // 
+            // lblRoleName
+            // 
+            lblRoleName.AutoSize = true;
+            lblRoleName.Location = new Point(4, 12);
+            lblRoleName.Name = "lblRoleName";
+            lblRoleName.Size = new Size(0, 15);
+            lblRoleName.TabIndex = 1;
             // 
             // btnExit
             // 
@@ -130,6 +140,7 @@ namespace DataApplication.GUI_Forms
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -143,5 +154,6 @@ namespace DataApplication.GUI_Forms
         private ToolTip toolTip1;
         private DataGridView dataGridView1;
         private Label label1;
+        private Label lblRoleName;
     }
 }

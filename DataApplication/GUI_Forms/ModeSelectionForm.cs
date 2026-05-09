@@ -31,7 +31,6 @@ namespace DataApplication.GUI_Forms
         {
             CurrentUser = user;
             ApplyRolePermissions(CurrentUser.Role);
-
         }
 
         private void btnShutdown_Click(object sender, EventArgs e)
