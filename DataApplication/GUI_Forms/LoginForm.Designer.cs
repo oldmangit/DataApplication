@@ -35,23 +35,26 @@
             txtUserName = new TextBox();
             label2 = new Label();
             panel1 = new Panel();
+            btnBack = new Button();
+            groupBox1 = new GroupBox();
             btnSave = new Button();
             comboBoxRole = new ComboBox();
             labelUserRole = new Label();
             linkLabel1 = new LinkLabel();
             labelTitleName = new Label();
             panel2 = new Panel();
-            btnBack = new Button();
             panelLogin = new Panel();
             panel1.SuspendLayout();
+            groupBox1.SuspendLayout();
             panel2.SuspendLayout();
             panelLogin.SuspendLayout();
             SuspendLayout();
             // 
             // btnLogin
             // 
+            btnLogin.Anchor = AnchorStyles.None;
             btnLogin.BackColor = Color.FromArgb(0, 192, 0);
-            btnLogin.Location = new Point(412, 183);
+            btnLogin.Location = new Point(234, 176);
             btnLogin.Margin = new Padding(0);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 32);
@@ -62,7 +65,8 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(344, 137);
+            txtPassword.Anchor = AnchorStyles.None;
+            txtPassword.Location = new Point(166, 130);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(143, 23);
             txtPassword.TabIndex = 3;
@@ -70,9 +74,10 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(237, 93);
+            label1.Location = new Point(59, 86);
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
             label1.TabIndex = 0;
@@ -80,16 +85,18 @@
             // 
             // txtUserName
             // 
-            txtUserName.Location = new Point(344, 85);
+            txtUserName.Anchor = AnchorStyles.None;
+            txtUserName.Location = new Point(166, 78);
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(143, 23);
             txtUserName.TabIndex = 2;
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(237, 145);
+            label2.Location = new Point(59, 138);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
             label2.TabIndex = 1;
@@ -97,24 +104,51 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnSave);
-            panel1.Controls.Add(comboBoxRole);
-            panel1.Controls.Add(labelUserRole);
-            panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(btnLogin);
-            panel1.Controls.Add(txtPassword);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txtUserName);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(btnBack);
+            panel1.Controls.Add(groupBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 100);
             panel1.Name = "panel1";
             panel1.Size = new Size(778, 342);
             panel1.TabIndex = 5;
             // 
+            // btnBack
+            // 
+            btnBack.Anchor = AnchorStyles.None;
+            btnBack.BackColor = Color.SlateGray;
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
+            btnBack.BackgroundImageLayout = ImageLayout.Zoom;
+            btnBack.Cursor = Cursors.Hand;
+            btnBack.Location = new Point(207, 288);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(33, 28);
+            btnBack.TabIndex = 6;
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(txtUserName);
+            groupBox1.Controls.Add(btnSave);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(comboBoxRole);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(labelUserRole);
+            groupBox1.Controls.Add(txtPassword);
+            groupBox1.Controls.Add(linkLabel1);
+            groupBox1.Controls.Add(btnLogin);
+            groupBox1.FlatStyle = FlatStyle.System;
+            groupBox1.Location = new Point(207, 31);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(384, 251);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            // 
             // btnSave
             // 
-            btnSave.Location = new Point(344, 183);
+            btnSave.Anchor = AnchorStyles.None;
+            btnSave.Location = new Point(166, 176);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(65, 32);
             btnSave.TabIndex = 8;
@@ -124,19 +158,21 @@
             // 
             // comboBoxRole
             // 
+            comboBoxRole.Anchor = AnchorStyles.None;
             comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.Items.AddRange(new object[] { "student", "instructor", "maintainer", "admin" });
-            comboBoxRole.Location = new Point(344, 35);
+            comboBoxRole.Location = new Point(166, 28);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(144, 23);
             comboBoxRole.TabIndex = 7;
             // 
             // labelUserRole
             // 
+            labelUserRole.Anchor = AnchorStyles.None;
             labelUserRole.AutoSize = true;
             labelUserRole.ForeColor = Color.White;
-            labelUserRole.Location = new Point(237, 38);
+            labelUserRole.Location = new Point(59, 31);
             labelUserRole.Name = "labelUserRole";
             labelUserRole.Size = new Size(56, 15);
             labelUserRole.TabIndex = 6;
@@ -144,10 +180,11 @@
             // 
             // linkLabel1
             // 
+            linkLabel1.Anchor = AnchorStyles.None;
             linkLabel1.AutoSize = true;
             linkLabel1.ForeColor = Color.Red;
             linkLabel1.LinkColor = Color.Red;
-            linkLabel1.Location = new Point(427, 168);
+            linkLabel1.Location = new Point(249, 161);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(59, 15);
             linkLabel1.TabIndex = 5;
@@ -157,6 +194,7 @@
             // 
             // labelTitleName
             // 
+            labelTitleName.Anchor = AnchorStyles.None;
             labelTitleName.AutoSize = true;
             labelTitleName.Font = new Font("Segoe UI Semibold", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTitleName.ForeColor = Color.White;
@@ -169,26 +207,12 @@
             // panel2
             // 
             panel2.BackColor = Color.Blue;
-            panel2.Controls.Add(btnBack);
             panel2.Controls.Add(labelTitleName);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(778, 100);
             panel2.TabIndex = 4;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.SlateGray;
-            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
-            btnBack.BackgroundImageLayout = ImageLayout.Zoom;
-            btnBack.Cursor = Cursors.Hand;
-            btnBack.Location = new Point(12, 12);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(33, 28);
-            btnBack.TabIndex = 6;
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
             // 
             // panelLogin
             // 
@@ -207,11 +231,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 442);
             Controls.Add(panelLogin);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panelLogin.ResumeLayout(false);
@@ -234,5 +259,6 @@
         private Label labelUserRole;
         private Button btnSave;
         private Button btnBack;
+        private GroupBox groupBox1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataApplication.Repository;
+﻿using DataApplication.Models;
+using DataApplication.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,15 @@ namespace DataApplication.GUI_Forms
     public partial class LoginForm : BaseForm
     {
         private  IUserRepository _repo;
-        public event EventHandler LoginSuccess;
+        public event Action<User> LoginSuccess;
         public event EventHandler NewUser;
+
+        
         
         public LoginForm(IUserRepository repo)
         {
             InitializeComponent();
+            MaximizeBox = false;
             _repo = repo;
 
             labelUserRole.Visible = false;
@@ -27,20 +31,18 @@ namespace DataApplication.GUI_Forms
             btnSave.Visible = false;
             btnBack.Visible = false;
         }
-
-
-
-        
+       
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
             string password = txtPassword.Text;
 
+            User? loggedUser = await _repo.GetUserAsync(username);
             bool success = await _repo.LoginUserAsync(username, password);
 
             if (success)
             {
-                LoginSuccess?.Invoke(this, EventArgs.Empty);
+                LoginSuccess?.Invoke(loggedUser);
             }
             else
             {

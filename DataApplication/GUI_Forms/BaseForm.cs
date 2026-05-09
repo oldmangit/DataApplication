@@ -15,20 +15,22 @@ namespace DataApplication.GUI_Forms
         public BaseForm()
         {
             InitializeComponent();
-            //InitializeBaseSettings();
-        }
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
 
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-                return;
-            InitializeBaseSettings();
+            //if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+            //    return;
+            //InitializeBaseSettings();
+           
         }
-        private void InitializeBaseSettings()
-        {
-            StartPosition = FormStartPosition.CenterScreen;
-            //WindowState = FormWindowState.Maximized;
-        }
+        
+        //protected void InitializeBaseSettings()
+        //{
+        //    StartPosition = FormStartPosition.CenterScreen;
+        //}
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    base.OnLoad(e);
+        //    if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+        //        WindowState = FormWindowState.Maximized;
+        //}
     }
 }

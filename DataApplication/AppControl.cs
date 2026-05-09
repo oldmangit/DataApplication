@@ -1,4 +1,5 @@
 ﻿using DataApplication.GUI_Forms;
+using DataApplication.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,9 @@ namespace DataApplication
 
         private LoginForm login;
         private ModeSelectionForm modeForm;
-        
+
+        public User CurrentUser { get; set; }
+
         public AppControl(IServiceProvider provider)
         {
             _provider = provider;
@@ -31,9 +34,11 @@ namespace DataApplication
             login.Show();
         }
        
-        private void OnLoginSuccess(object sender , EventArgs e)
+        private void OnLoginSuccess(User user)
         {
+            CurrentUser = user;
             modeForm = _provider.GetRequiredService<ModeSelectionForm>();
+            modeForm.InitializeUser(CurrentUser);
 
             modeForm.FormClosed += OnFormClosed;
             modeForm.LogoutRequested += OnLogoutRequested;
@@ -41,12 +46,12 @@ namespace DataApplication
             modeForm.ShutdownApp += OnShuttingDownApp;
             modeForm.Show();
 
-            if (sender is LoginForm login)
-            {
-                login.LoginSuccess -= OnLoginSuccess;
-                login.FormClosed -= OnFormClosed;
-                login.Close();
-            }
+            
+            login.LoginSuccess -= OnLoginSuccess;
+            login.FormClosed -= OnFormClosed;
+
+            login.Close();
+            
         }
         private void OnShuttingDownApp(object sender , EventArgs e)
         {

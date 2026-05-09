@@ -83,6 +83,7 @@ namespace DataApplication.GUI_Forms
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(283, 26);

@@ -66,7 +66,6 @@
             panel4.Controls.Add(btnAdministration);
             panel4.Controls.Add(btnDiagnostics);
             panel4.Controls.Add(btnOnlineMode);
-            panel4.Cursor = Cursors.Hand;
             panel4.Dock = DockStyle.Fill;
             panel4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             panel4.Location = new Point(0, 83);
@@ -76,7 +75,9 @@
             // 
             // btnHelp
             // 
+            btnHelp.Anchor = AnchorStyles.None;
             btnHelp.BackColor = Color.LightGray;
+            btnHelp.Cursor = Cursors.Hand;
             btnHelp.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnHelp.Location = new Point(298, 199);
             btnHelp.Name = "btnHelp";
@@ -87,7 +88,9 @@
             // 
             // btnAdministration
             // 
+            btnAdministration.Anchor = AnchorStyles.None;
             btnAdministration.BackColor = Color.LightGray;
+            btnAdministration.Cursor = Cursors.Hand;
             btnAdministration.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnAdministration.Location = new Point(298, 148);
             btnAdministration.Name = "btnAdministration";
@@ -98,7 +101,9 @@
             // 
             // btnDiagnostics
             // 
+            btnDiagnostics.Anchor = AnchorStyles.None;
             btnDiagnostics.BackColor = Color.LightGray;
+            btnDiagnostics.Cursor = Cursors.Hand;
             btnDiagnostics.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnDiagnostics.Location = new Point(298, 97);
             btnDiagnostics.Name = "btnDiagnostics";
@@ -109,7 +114,9 @@
             // 
             // btnOnlineMode
             // 
+            btnOnlineMode.Anchor = AnchorStyles.None;
             btnOnlineMode.BackColor = Color.LightGray;
+            btnOnlineMode.Cursor = Cursors.Hand;
             btnOnlineMode.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnOnlineMode.Location = new Point(298, 46);
             btnOnlineMode.Name = "btnOnlineMode";
@@ -133,6 +140,7 @@
             // 
             // btnLogout
             // 
+            btnLogout.Anchor = AnchorStyles.None;
             btnLogout.BackColor = Color.LightGray;
             btnLogout.Cursor = Cursors.Hand;
             btnLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -146,6 +154,7 @@
             // 
             // btnChangePassword
             // 
+            btnChangePassword.Anchor = AnchorStyles.None;
             btnChangePassword.BackColor = Color.LightGray;
             btnChangePassword.Cursor = Cursors.Hand;
             btnChangePassword.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -158,6 +167,7 @@
             // 
             // btnShutdown
             // 
+            btnShutdown.Anchor = AnchorStyles.None;
             btnShutdown.BackColor = Color.LightGray;
             btnShutdown.Cursor = Cursors.Hand;
             btnShutdown.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -181,6 +191,7 @@
             // 
             // labelModeTitle
             // 
+            labelModeTitle.Anchor = AnchorStyles.None;
             labelModeTitle.AutoSize = true;
             labelModeTitle.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelModeTitle.Location = new Point(230, 19);
@@ -199,6 +210,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ModeSelectionForm";
             Text = "ModeSelectionForm";
+            Load += ModeSelectionForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);

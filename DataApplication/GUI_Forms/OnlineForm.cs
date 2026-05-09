@@ -15,6 +15,7 @@ namespace DataApplication.GUI_Forms
         public OnlineForm(IUserRepository repo)
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
             _repo = repo;
         }
 
